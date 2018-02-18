@@ -23,7 +23,7 @@ iou_threshold = 0.5
 
 if file_name.rsplit('.', 1)[1] == 'avi':
     codec = '*XVID'
-if if file_name.rsplit('.', 1)[1] == 'mp4':
+if file_name.rsplit('.', 1)[1] == 'mp4':
     codec = 'm', 'p', '4', 'v'
 
 sess = K.get_session()
