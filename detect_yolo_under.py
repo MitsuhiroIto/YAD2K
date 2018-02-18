@@ -10,7 +10,6 @@ import numpy as np
 from keras import backend as K
 from keras.models import load_model
 from PIL import Image, ImageDraw, ImageFont
-
 from yad2k.models.keras_yolo import yolo_eval, yolo_head
 
 file_name = sys.argv[1]
@@ -22,8 +21,7 @@ output_path = file_name.rsplit('.', 1)[0]  + "_yolo." +  file_name.rsplit('.', 1
 score_threshold = 0.3
 iou_threshold = 0.5
 
-
-sess = K.get_session()  # TODO: Remove dependence on Tensorflow session.
+sess = K.get_session()  
 
 with open(classes_path) as f:
     class_names = f.readlines()
