@@ -21,10 +21,6 @@ output_path = file_name.rsplit('.', 1)[0]  + "_yolo." +  file_name.rsplit('.', 1
 score_threshold = 0.3
 iou_threshold = 0.5
 
-if file_name.rsplit('.', 1)[1] == 'avi':
-    codec = '*XVID'
-if file_name.rsplit('.', 1)[1] == 'mp4':
-    codec = 'm', 'p', '4', 'v'
 
 sess = K.get_session()
 
@@ -78,7 +74,14 @@ flameSpan = 1.0 / flameFPS
 
 nowFlame = 0
 
-fourcc = cv2.VideoWriter_fourcc(codec)
+if file_name.rsplit('.', 1)[1] == 'avi':
+    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    print('avi')
+
+if file_name.rsplit('.', 1)[1] == 'mp4':
+    fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
+    print('mp4')
+
 VWriter = cv2.VideoWriter(output_path,fourcc, flameFPS, (Width, Height))
 capture.set(cv2.CAP_PROP_POS_FRAMES, nowFlame)
 
